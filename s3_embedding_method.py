@@ -115,8 +115,8 @@ class S3EmbeddingMethod(EmbeddingMethod):
 s3_embedder = S3EmbeddingMethod(
     bucket="phyton-bucket27",
     prefix="dosyalar/", 
-    aws_access_id="AKIA4UR6H2EZGEBYQ3CM",
-    aws_access_secret="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",
+    aws_access_id="...........",
+    aws_access_secret="..............",
     region_name="eu-north-1"
 )
 documents = s3_embedder.get_documents(data_source_id="s3_1")

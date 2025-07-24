@@ -1,3 +1,4 @@
+import os
 from typing import Sequence, List, Protocol, Optional
 from llama_index.core.schema import Document, BaseNode
 from llama_index.readers.s3 import S3Reader
@@ -54,8 +55,8 @@ class S3EmbeddingMethod(EmbeddingMethod):
     def __init__(self, bucket: str, prefix: str = "", aws_access_id: str = "", aws_access_secret: str = "", region_name: str = "eu-north-1"):
         self.bucket = bucket
         self.prefix = prefix
-        self.aws_access_id = aws_access_id
-        self.aws_access_secret = aws_access_secret
+        self.aws_access_id = aws_access_id or os.environ.get('AWS_ACCESS_KEY_ID')
+        self.aws_access_secret = aws_access_secret or os.environ.get('AWS_SECRET_ACCESS_KEY')
         self.region_name = region_name
 
     @staticmethod
@@ -115,8 +116,7 @@ class S3EmbeddingMethod(EmbeddingMethod):
 s3_embedder = S3EmbeddingMethod(
     bucket="phyton-bucket27",
     prefix="dosyalar/", 
-    aws_access_id="...........",
-    aws_access_secret="..............",
+
     region_name="eu-north-1"
 )
 documents = s3_embedder.get_documents(data_source_id="s3_1")

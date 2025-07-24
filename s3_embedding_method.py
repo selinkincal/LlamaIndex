@@ -114,11 +114,11 @@ class S3EmbeddingMethod(EmbeddingMethod):
         pass 
 
 s3_embedder = S3EmbeddingMethod(
-    bucket="phyton-bucket27",
-    prefix="dosyalar/", 
+    bucket="python-bucket27",
+    prefix="", 
 
     region_name="eu-north-1"
 )
 documents = s3_embedder.get_documents(data_source_id="s3_1")
 print(f"{len(documents)} adet belge bulundu.")  
-nodes = s3_embedder.get_nodes(documents)
+nodes = s3_embedder.get_nodes(documents)h

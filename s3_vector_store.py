@@ -34,7 +34,7 @@ documents = [
 index = VectorStoreIndex.from_documents(
     documents,
     storage_context=StorageContext.from_defaults(vector_store=vector_store),
-    embed_model=OpenAIEmbedding(model="text-embedding-3-small", api_key="sk-proj-s4n_FzghR_EO0F6VhrZi2Kp9zxZbe42reTnxpzshT67doLhZzK3GWxZQ7s9RP8Rss2akSBHBUDT3BlbkFJEF2JbFbUIJepvSq1ARb_BhCQ0WxsWoMaXasWl3Gn373QY8qXdzgoC_kLuXsT0TYdRtF7-jdJ4AAZ"),
+    embed_model=OpenAIEmbedding(model="text-embedding-3-small", api_key=openai_api_key ),
 )
 
 

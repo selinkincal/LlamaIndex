@@ -3,21 +3,25 @@ import openai
 from llama_index.vector_stores.singlestoredb import SingleStoreVectorStore
 from llama_index.core.schema import TextNode
 from llama_index.core.vector_stores import VectorStoreQuery
+from dotenv import load_dotenv
+import os
 
-openai.api_key = "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"
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 vector_store = SingleStoreVectorStore(
-    host="svc-3482219c-a389-4079-b18b-d50662524e8a-shared-dml.aws-virginia-6.svc.singlestore.com",
-    port=3333,
-    user="selin-2ff91",
-    password="Ukq!0|oe@c4;aNp)mdpsx",
-    database="db_seln_c10cf",
+    host=os.getenv("DB_HOST"),
+    port=int(os.getenv("DB_PORT")),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME"),
     table_name="documents",
     content_field="content",
     metadata_field="metadata",
     vector_field="embedding",
     timeout=30,
 )
+
 
 def get_embedding(text):
     response = openai.Embedding.create(
@@ -51,3 +55,4 @@ result = vector_store.query(query)
 
 for node in result.nodes:
     print("Sonuç:", node.text)
+

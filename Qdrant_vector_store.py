@@ -5,10 +5,11 @@ from llama_index.core import VectorStoreIndex, StorageContext
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import Settings
 import os
+from dotenv import load_dotenv
 
-os.environ["OPENAI_API_KEY"] = "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"
+load_dotenv()
+openai_key = os.getenv("OPENAI_API_KEY")
 
-# Qdrant bağlantısı
 client = qdrant_client.QdrantClient(
     host="localhost",
       port=6333
@@ -27,3 +28,4 @@ index = VectorStoreIndex.from_documents(
 
 query_engine = index.as_query_engine()
 response = query_engine.query("What did the author do growing up?")
+

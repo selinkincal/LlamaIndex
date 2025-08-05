@@ -4,10 +4,14 @@ from couchbase.cluster import Cluster
 from couchbase.options import ClusterOptions
 from llama_index.vector_stores.couchbase import CouchbaseSearchVectorStore
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext
+import os
+from dotenv import load_dotenv
 
-COUCHBASE_CONNECTION_STRING = "couchbases://cb.3ovlzfr3klydpgu.cloud.couchbase.com"
-DB_USERNAME = "couchbaseLlamaIndex"
-DB_PASSWORD = "N0d3X!9tLeRu7K"
+load_dotenv()
+
+COUCHBASE_CONNECTION_STRING = os.getenv("COUCHBASE_CONNECTION_STRING")
+DB_USERNAME = os.getenv("DB_USERNAME")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 auth = PasswordAuthenticator(DB_USERNAME, DB_PASSWORD)
 options = ClusterOptions(auth)
@@ -27,4 +31,5 @@ vector_store = CouchbaseSearchVectorStore(
 documents = SimpleDirectoryReader("./data/paul_graham_essay3.txt").load_data()
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
+
 

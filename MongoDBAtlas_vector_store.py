@@ -5,11 +5,12 @@ from llama_index.vector_stores.mongodb import MongoDBAtlasVectorSearch
 from llama_index.core import VectorStoreIndex 
 from llama_index.core import StorageContext 
 from llama_index.core import SimpleDirectoryReader
+from dotenv import load_dotenv
 
-os.environ["OPENAI_API_KEY"] = "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"
+load_dotenv()
 
-mongo_uri = ( "mongodb+srv://vectorUser:M0ng0DBAI2025@vectormongodb.zh0nhso.mongodb.net/?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
-)
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+mongo_uri = os.getenv("MONGODB_ATLAS_URI")
 
 mongodb_client = pymongo.MongoClient(mongo_uri)
 
@@ -35,4 +36,5 @@ index = VectorStoreIndex.from_documents(
 
 response = index.as_query_engine().query("Uber'in geliri ne kadardı?")
 print(response)
+
 

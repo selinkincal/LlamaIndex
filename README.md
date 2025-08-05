@@ -4,14 +4,14 @@
 Bu proje, farklı vektör veritabanları (vector stores) ile kolayca çalışmanı sağlayan Python modülleri içerir. Her dosya belirli bir veritabanı için hazırlanmış ve temel işlemleri gerçekleştirecek şekilde yapılandırılmıştır.
 
 
-## ⚙️ Kurulum
+# ⚙️ Kurulum
 
 Öncelikle gerekli Python paketlerini kurmalısınız:
 
 ```bash
 pip install -r requirements.txt
 
-## 🗂️ Proje Yapısı
+# 🗂️ Proje Yapısı
 
 ├── Chroma_vector_store.py
 ├── Couchbase_vector_store.py
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 └── README.md
 
 
-## 📁 Dosyalar ve Detaylı Açıklamaları
+# 📁 Dosyalar ve Detaylı Açıklamaları
 
 Aşağıda bu projede bulunan dosyalar ve her birinin görevi detaylı bir şekilde açıklanmıştır.
 
